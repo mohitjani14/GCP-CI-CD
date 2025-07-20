@@ -1,19 +1,16 @@
 steps:
-  # Step 1: Build Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/flask-color-app', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/flask-color-app', '.']
 
-  # Step 2: Push to Artifact Registry or Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/flask-color-app']
+    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/flask-color-app']
 
-  # Step 3: Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
       [
         'run', 'deploy', 'flask-color-app',
-        '--image', 'gcr.io/$PROJECT_ID/flask-color-app',
+        '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/flask-color-app',
         '--platform', 'managed',
         '--region', 'us-central1',
         '--allow-unauthenticated',
@@ -21,7 +18,7 @@ steps:
       ]
 
 images:
-  - 'gcr.io/$PROJECT_ID/flask-color-app'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/flask-color-app'
 
 options:
   logging: CLOUD_LOGGING_ONLY
