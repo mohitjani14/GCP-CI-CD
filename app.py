@@ -44,8 +44,8 @@ def home():
     </head>
     <body>
         <h1>🚀 Welcome to GCP CI/CD Demo</h1>
-        <p>Powered by <strong>Mohit Jani</strong></p>
-        <p class="tag">Colorful, Simple, & One Page</p>
+        <p>Created by <strong>Mohit Jani</strong></p>
+        <p class="tag">Simple, & Easy</p>
     </body>
     </html>
     """
